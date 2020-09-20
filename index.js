@@ -3,9 +3,8 @@ const mongoose = require('mongoose')
 var nunjucks  = require('nunjucks');
 const session = require('express-session')
 
-require('dotenv').config({path:__dirname+'/.env'})
 
-mongoose.connect(process.env.MONGODB_URL,{useNewUrlParser:true,useUnifiedTopology:true});
+mongoose.connect(process.env.MONGODB_URI,{useNewUrlParser:true,useUnifiedTopology:true});
 
 const app = express()
 
@@ -16,6 +15,8 @@ nunjucks.configure(['views/'],{
   autoescape:false,
   express:app
 })
+
+require('dotenv').config()
 
 app.use(session({
     secret: "supersecretfile",
