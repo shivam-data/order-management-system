@@ -22,9 +22,9 @@ router.post('/transactions',checkAuthenticated,BusinessController.postTransactio
 
 router.get('/transactions',checkAuthenticated,BusinessController.getTransaction)
 
-router.post('/hireshivam',BusinessController.hireShivam)
+router.post('/hireshivam',checkAuthenticated,BusinessController.hireShivam)
 
-router.post('/addproducts',checkAuthenticated,(req,res)=>{
+router.post('/addproducts',(req,res)=>{
     name = req.body.name
     price = req.body.price
     image = req.body.image
