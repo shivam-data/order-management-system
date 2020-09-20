@@ -5,7 +5,7 @@ const session = require('express-session')
 
 require('dotenv').config({path:__dirname+'/.env'})
 
-mongoose.connect(process.env['MONGO_URL'],{useNewUrlParser:true,useUnifiedTopology:true});
+mongoose.connect(process.env.MONGODB_URL,{useNewUrlParser:true,useUnifiedTopology:true});
 
 const app = express()
 
@@ -18,7 +18,7 @@ nunjucks.configure(['views/'],{
 })
 
 app.use(session({
-    secret: process.env['SECRET'],
+    secret: "supersecretfile",
     resave: true,
     saveUninitialized: true,
 }));
@@ -35,4 +35,4 @@ app.use(express.urlencoded({extended:false}))
 app.use('/',AuthRoute)
 app.use('/',BusinessRoute)
 
-app.listen(8080)
+app.listen(process.env.PORT )
