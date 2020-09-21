@@ -3,8 +3,10 @@ const mongoose = require('mongoose')
 var nunjucks  = require('nunjucks');
 const session = require('express-session')
 
+require('dotenv').config()
 
-mongoose.connect(process.env.MONGODB_URI,{useNewUrlParser:true,useUnifiedTopology:true});
+
+mongoose.connect(process.env.MONGO_URI,{useNewUrlParser:true,useUnifiedTopology:true});
 
 const app = express()
 
@@ -15,8 +17,6 @@ nunjucks.configure(['views/'],{
   autoescape:false,
   express:app
 })
-
-require('dotenv').config()
 
 app.use(session({
     secret: "supersecretfile",
@@ -36,4 +36,4 @@ app.use(express.urlencoded({extended:false}))
 app.use('/',AuthRoute)
 app.use('/',BusinessRoute)
 
-app.listen(process.env.PORT )
+app.listen(6969)
