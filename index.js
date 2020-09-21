@@ -36,4 +36,4 @@ app.use(express.urlencoded({extended:false}))
 app.use('/',AuthRoute)
 app.use('/',BusinessRoute)
 
-app.listen(6969)
+app.listen(process.env.PORT)
